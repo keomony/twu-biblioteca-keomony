@@ -7,8 +7,13 @@ import static java.util.stream.Collectors.joining;
 
 public class BibliotecaApp {
 
+    private List<String> listOfBooks;
+
+    public BibliotecaApp (List<String> books){
+        listOfBooks = books;
+    }
     public static void main(String[] args) {
-        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(Arrays.asList("Re Work", "Head First Java", "Extreme Programming"));
         bibliotecaApp.afterLoginSuccessfully("Mony");
     }
     public String showWelcomeUserWithMsg(String userName){
@@ -16,7 +21,6 @@ public class BibliotecaApp {
         return welcomeMsg;
     }
     public String showListOfBooks(){
-        List<String> listOfBooks = Arrays.asList("Re Work", "Head First Java", "Extreme Programming");
         Stream<String> streamBooks = listOfBooks.stream();
         return streamBooks.collect(joining(", "));
     }
