@@ -24,4 +24,16 @@ public class BibliotecaAppTest {
 
         assertThat(baos.toString(), containsString("Welcome"));
     }
+
+    @Test
+    public void testPrintListOfBooks(){
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(baos);
+
+        bibliotecaApp.run(null, ps);
+
+        assertThat(baos.toString(), containsString("Re Work"));
+        assertThat(baos.toString(), containsString("Extreme Programming"));
+    }
 }
