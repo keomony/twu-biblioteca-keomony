@@ -17,9 +17,10 @@ public class BibliotecaAppTest {
 
     @Before
     public void beforeTest() {
-        List<Book> books = Arrays.asList(new Book("Re Work","",0),new Book("Head First Java","",0), new Book("Extreme Programming", "", 0));
+        List<Book> books = Arrays.asList(new Book("Re Work","Mony",2010),new Book("Head First Java","Kenji",2012), new Book("Extreme Programming", "Gergo", 2017));
         List<Book> list = new ArrayList<>(books);
         bibliotecaApp = new BibliotecaApp(list);
+
     }
 
     //    Welcome Message  - As a customer, I would like to see a welcome message when I start the application,
@@ -41,7 +42,7 @@ public class BibliotecaAppTest {
     @Test
     public void testListAllAvailableBooks() {
         String listOfBooks = bibliotecaApp.showListOfBooks();
-        Assert.assertEquals("List of books doesn't match.", "Re Work, Head First Java, Extreme Programming", listOfBooks);
+        Assert.assertEquals("List of books doesn't match.", "Re Work by Mony (2010), Head First Java by Kenji (2012), Extreme Programming by Gergo (2017)", listOfBooks);
     }
 
 }
