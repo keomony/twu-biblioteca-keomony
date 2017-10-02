@@ -19,7 +19,9 @@ public class BibliotecaAppTest {
     public void beforeTest() {
         List<Book> books = Arrays.asList(new Book("Re Work","Mony",2010),new Book("Head First Java","Kenji",2012), new Book("Extreme Programming", "Gergo", 2017));
         List<Book> list = new ArrayList<>(books);
-        bibliotecaApp = new BibliotecaApp(list);
+        List<MenuItem> menu = Arrays.asList(new MenuItem(1,"List Of Books", null), new MenuItem(2,"Exit",null));
+        List<MenuItem> menuList = new ArrayList<>(menu);
+        bibliotecaApp = new BibliotecaApp(list, menuList);
 
     }
 
@@ -43,6 +45,15 @@ public class BibliotecaAppTest {
     public void testListAllAvailableBooks() {
         String listOfBooks = bibliotecaApp.showListOfBooks();
         Assert.assertEquals("List of books doesn't match.", "Re Work by Mony (2010), Head First Java by Kenji (2012), Extreme Programming by Gergo (2017)", listOfBooks);
+    }
+
+    //    Main Menu  - As a customer, instead of automatically seeing the book list,
+    // I would like to see a list of options and be able to choose one. For now,
+    // the only option should be 'List Books'. All future options should be added to this menu also.
+    @Test
+    public void testShowMainMenu(){
+        String listOfMenu = bibliotecaApp.showMenu();
+        Assert.assertEquals("1- List Of Books\n2- Exit\n", listOfMenu);
     }
 
 }
