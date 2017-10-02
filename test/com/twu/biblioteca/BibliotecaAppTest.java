@@ -6,7 +6,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class BibliotecaAppTest {
 
@@ -15,7 +17,9 @@ public class BibliotecaAppTest {
 
     @Before
     public void beforeTest() {
-        bibliotecaApp = new BibliotecaApp(Arrays.asList("Re Work", "Head First Java", "Extreme Programming"));
+        List<Book> books = Arrays.asList(new Book("Re Work","",0),new Book("Head First Java","",0), new Book("Extreme Programming", "", 0));
+        List<Book> list = new ArrayList<>(books);
+        bibliotecaApp = new BibliotecaApp(list);
     }
 
     //    Welcome Message  - As a customer, I would like to see a welcome message when I start the application,
@@ -37,7 +41,6 @@ public class BibliotecaAppTest {
     @Test
     public void testListAllAvailableBooks() {
         String listOfBooks = bibliotecaApp.showListOfBooks();
-
         Assert.assertEquals("List of books doesn't match.", "Re Work, Head First Java, Extreme Programming", listOfBooks);
     }
 
