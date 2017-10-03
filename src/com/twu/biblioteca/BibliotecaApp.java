@@ -17,13 +17,25 @@ public class BibliotecaApp {
 
     public void run(InputStream in, PrintStream out) {
         out.println("Welcome");
+        printMainMenuOption(out);
+        chooseMenuOptionByUserInput(in, out);
+    }
+
+    private void printMainMenuOption(PrintStream out) {
         out.println("Main Menu");
         out.println("1- List Of Books");
         out.println("2- Quit");
         out.println("Please type in your option, 1 or 2.");
+    }
 
+    private void chooseMenuOptionByUserInput(InputStream in, PrintStream out) {
         Scanner reader = new Scanner(in);
         int input = reader.nextInt();
+        loopOnMenuOptionByUserInput(out, reader, input);
+        reader.close();
+    }
+
+    private void loopOnMenuOptionByUserInput(PrintStream out, Scanner reader, int input) {
         while (true) {
             if (input == 1) {
                 out.println("Here is the list of the books.");
@@ -42,6 +54,5 @@ public class BibliotecaApp {
                 input = reader.nextInt();
             }
         }
-        reader.close();
     }
 }
