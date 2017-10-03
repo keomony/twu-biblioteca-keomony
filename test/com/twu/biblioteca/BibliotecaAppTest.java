@@ -36,4 +36,16 @@ public class BibliotecaAppTest {
         assertThat(baos.toString(), containsString("Re Work"));
         assertThat(baos.toString(), containsString("Extreme Programming"));
     }
+
+    @Test
+    public void testPrintBooksDetail(){
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(baos);
+
+        bibliotecaApp.run(null, ps);
+
+        assertThat(baos.toString(), containsString("Re Work - DHH - 2006"));
+        assertThat(baos.toString(), containsString("Extreme Programming - Kent Beck - 2008" ));
+    }
 }
