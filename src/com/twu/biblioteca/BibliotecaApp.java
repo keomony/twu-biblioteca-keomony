@@ -24,9 +24,7 @@ public class BibliotecaApp {
 
         Scanner reader = new Scanner(in);
         int input = reader.nextInt();
-        out.println(input+"out side the loop");
         while (true) {
-            out.println(input+"top in loop");
             if (input == 1) {
                 out.println("Here is the list of the books.");
                 List<Book> books = new ArrayList<>(Arrays.asList(new Book("Re Work", "DHH", 2006), new Book("Extreme Programming", "Kent Beck", 2008)));
@@ -42,7 +40,6 @@ public class BibliotecaApp {
                 out.println("Invalid option");
                 out.println("Select a valid option, 1 or 2.");
                 input = reader.nextInt();
-                out.println(input+"inside the loop");
             }
         }
         reader.close();
