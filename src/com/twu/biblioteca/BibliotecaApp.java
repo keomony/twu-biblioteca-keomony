@@ -6,9 +6,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.joining;
+import java.util.Scanner;
 
 public class BibliotecaApp {
 
@@ -19,12 +17,20 @@ public class BibliotecaApp {
 
     public void run(InputStream in, PrintStream out) {
         out.println("Welcome");
+        out.println("Main Menu");
+        out.println("1- List Of Books");
+        out.println("2- Exit");
         out.println("Here is the list of the books.");
-        List<Book> books = new ArrayList<>(Arrays.asList(new Book("Re Work", "DHH", 2006), new Book("Extreme Programming", "Kent Beck", 2008)));
-        for (int i = 0; i < books.size(); i++) {
-            Book book = books.get(i);
-            out.println(MessageFormat.format("{0} - {1} - {2}", book.getTitle(), book.getAuthor(), "" + book.getYear()));
+        Scanner reader = new Scanner(in);
+        int input = reader.nextInt();
+        if (input == 1) {
+
+            List<Book> books = new ArrayList<>(Arrays.asList(new Book("Re Work", "DHH", 2006), new Book("Extreme Programming", "Kent Beck", 2008)));
+            for (int i = 0; i < books.size(); i++) {
+                Book book = books.get(i);
+                out.println(MessageFormat.format("{0} - {1} - {2}", book.getTitle(), book.getAuthor(), "" + book.getYear()));
+            }
         }
-        
+
     }
 }
