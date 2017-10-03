@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.*;
@@ -22,7 +21,7 @@ public class BibliotecaAppTest {
 
         assertThat(baos.toString(), containsString("Welcome"));
     }
-    @Ignore
+
     @Test
     public void testPrintListOfBooks(){
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
@@ -37,7 +36,6 @@ public class BibliotecaAppTest {
         assertThat(baos.toString(), containsString("Extreme Programming"));
     }
 
-    @Ignore
     @Test
     public void testPrintBooksDetail(){
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
@@ -78,6 +76,19 @@ public class BibliotecaAppTest {
 
         assertThat(baos.toString(), containsString("Re Work - DHH - 2006"));
         assertThat(baos.toString(), containsString("Extreme Programming - Kent Beck - 2008" ));
+
+    }
+
+    @Test
+    public void testInvalidMenuOption(){
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(baos);
+        ByteArrayInputStream in = new ByteArrayInputStream("3".getBytes());
+        bibliotecaApp.run(in, ps);
+
+        assertThat(baos.toString(), containsString("Invalid option"));
+        assertThat(baos.toString(), containsString("Select a valid option"));
 
     }
 
