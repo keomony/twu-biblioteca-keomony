@@ -20,20 +20,22 @@ public class BibliotecaAppTest {
         ps = new PrintStream(baos);
     }
 
+    private void runBibliotecaAppinTest(String inputString) {
+        ByteArrayInputStream in = new ByteArrayInputStream(inputString.getBytes());
+        bibliotecaApp.run(in, ps);
+    }
 
     @Test
     public void testWelcomeMessage() {
 
-        ByteArrayInputStream in = new ByteArrayInputStream("1".getBytes());
-        bibliotecaApp.run(in, ps);
+        runBibliotecaAppinTest("1");
         assertThat(baos.toString(), containsString("Welcome"));
     }
 
     @Test
     public void testPrintListOfBooks() {
 
-        ByteArrayInputStream in = new ByteArrayInputStream("1".getBytes());
-        bibliotecaApp.run(in, ps);
+        runBibliotecaAppinTest("1");
         assertThat(baos.toString(), containsString("Re Work"));
         assertThat(baos.toString(), containsString("Extreme Programming"));
     }
@@ -41,8 +43,7 @@ public class BibliotecaAppTest {
     @Test
     public void testPrintBooksDetail() {
 
-        ByteArrayInputStream in = new ByteArrayInputStream("1".getBytes());
-        bibliotecaApp.run(in, ps);
+        runBibliotecaAppinTest("1");
         assertThat(baos.toString(), containsString("Re Work - DHH - 2006"));
         assertThat(baos.toString(), containsString("Extreme Programming - Kent Beck - 2008"));
     }
@@ -50,8 +51,7 @@ public class BibliotecaAppTest {
     @Test
     public void testPrintMenu() {
 
-        ByteArrayInputStream in = new ByteArrayInputStream("1".getBytes());
-        bibliotecaApp.run(in, ps);
+        runBibliotecaAppinTest("1");
         assertThat(baos.toString(), containsString("Main Menu"));
         assertThat(baos.toString(), containsString("1- List Of Books"));
         assertThat(baos.toString(), containsString("2- Quit"));
@@ -61,8 +61,7 @@ public class BibliotecaAppTest {
     @Test
     public void testSeeBooksListAfterSelectingTheMenuOption() {
 
-        ByteArrayInputStream in = new ByteArrayInputStream("1".getBytes());
-        bibliotecaApp.run(in, ps);
+        runBibliotecaAppinTest("1");
         assertThat(baos.toString(), containsString("Re Work - DHH - 2006"));
         assertThat(baos.toString(), containsString("Extreme Programming - Kent Beck - 2008"));
 
@@ -71,8 +70,7 @@ public class BibliotecaAppTest {
     @Test
     public void testInvalidMenuOptionThenRe_enter() {
 
-        ByteArrayInputStream inputInvalidOption = new ByteArrayInputStream("3\n1".getBytes());
-        bibliotecaApp.run(inputInvalidOption, ps);
+        runBibliotecaAppinTest("3\n1");
         assertThat(baos.toString(), containsString("Invalid option"));
         assertThat(baos.toString(), containsString("Select a valid option"));
         assertThat(baos.toString(), containsString("Re Work - DHH - 2006"));
@@ -82,8 +80,7 @@ public class BibliotecaAppTest {
     @Test
     public void testStopTheAppWhenQuitChosen() {
 
-        ByteArrayInputStream in = new ByteArrayInputStream("2".getBytes());
-        bibliotecaApp.run(in, ps);
+        runBibliotecaAppinTest("2");
         assertThat(baos.toString(), containsString("Exiting..."));
 
     }
